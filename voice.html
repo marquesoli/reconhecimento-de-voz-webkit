@@ -3,11 +3,20 @@
   <head>
     <title>Comando de voz por webkitSpeechRecognition</title>
   </head>
-  <body>
-    <textarea id="output" style="width: 900px; height: 300px;"></textarea>
+  <!-- <body style="background-color: #f7f7f7;"> -->
+
+        <body style="background-color: #f7f7f7; max-width: 500px;
+        margin-left: 200px;">
+
+        
+
+
+    <h1 style=" font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">Talk is cheap, time is not</h1>
+    <textarea id="output" style="padding-top: 16px; padding-left: 16px; font-weight: normal; font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  width: 600px; height: 300px; border-radius: 24px; border-color: lightseagreen;"></textarea>
+
     <br/><br/>
-    <button id="start" style="width: 150px; height: 28px; background-color: lightseagreen; color: black; border-radius: 10px; border: none;">Clique e fale algo</button>
-    <button id="stop" style="width: 150px; height: 28px; background-color:lightsalmon; color: white; border-radius: 10px; border: none;">Parar de gravar</button>
+    <button id="start" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 150px; height: 28px; background-color: lightseagreen; color: black; border-radius: 10px; border: none;">Clique e fale algo</button>
+    <button id="stop" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; width: 150px; height: 28px; background-color:lightsalmon; color: white; border-radius: 10px; border: none;">Parar de gravar</button>
     
     <script>
       (() => {
