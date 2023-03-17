@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comando de voz por webkitSpeechRecognition</title>
+  </head>
+  <body>
+    <textarea id="output" style="width: 900px; height: 300px;"></textarea>
+    <br/><br/>
+    <button id="start" style="width: 150px; height: 28px; background-color: lightseagreen; color: black; border-radius: 10px; border: none;">Clique e fale algo</button>
+    <button id="stop" style="width: 150px; height: 28px; background-color:lightsalmon; color: white; border-radius: 10px; border: none;">Parar de gravar</button>
+    
+    <script>
+      (() => {
+        const startBtn = document.querySelector('#start');
+        const stopBtn = document.querySelector('#stop');
+        const output = document.querySelector('#output');
+        const recognition = new webkitSpeechRecognition();
+        recognition.interimResults = true;
+        recognition.lang = "pt-br";
+        recognition.continuous = true;
+
+        let transcript = '';
+
+        startBtn.addEventListener('click', () => {
+          recognition.start();
+        });
+
+        stopBtn.addEventListener('click', () => {
+          recognition.stop();
+        });
+
+        recognition.onresult = function(event) {
+          let interimTranscript = '';
+          let finalTranscript = transcript;
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+              finalTranscript += event.results[i][0].transcript + '\n';
+            } else {
+              interimTranscript += event.results[i][0].transcript;
+            }
+          }
+          transcript = finalTranscript;
+          output.value = transcript + interimTranscript;
+        };
+
+        recognition.onend = function() {
+          recognition.stop();
+        }
+      })();
+    </script>
+  </body>
+</html>
